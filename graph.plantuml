@@ -1,0 +1,51 @@
+@startuml SESE_Graph
+hide empty description
+State N1
+State N2
+State N3
+State N4
+State N5
+State N6
+State NW
+' N7
+
+N1 : lo = 0
+N1 : hi = len(arr)
+N2 : mid = (lo + hi) // 2
+N3 : return mid
+N4 : hi = mid
+N5 : lo = mid + 1
+N6 : return -1
+
+[*] -> N1
+N1 -> NW
+NW -> N2: lo <= hi
+NW -> N6: lo > hi
+N4 -> NW
+N5 -> NW
+N2 -> N3 : x == arr[mid] and (mid == 0 or x != arr[mid - 1])
+N2 -> N4 : ![x == arr[mid] and (mid == 0 or x != arr[mid - 1])] and x <= arr[mid]
+N2 -> N5 : ![![x == arr[mid] and (mid == 0 or x != arr[mid - 1])] and x <= arr[mid]]
+N3 --> [*]
+N6 --> [*]
+
+
+@enduml
+
+' def find_first_in_sorted(arr, x):
+'     lo = 0
+'     hi = len(arr)
+
+'     while lo <= hi:
+'         mid = (lo + hi) // 2
+
+'         if x == arr[mid] and (mid == 0 or x != arr[mid - 1]):
+'             return mid
+
+'         elif x <= arr[mid]:
+'             hi = mid
+
+'         else:
+'             lo = mid + 1
+
+'     return -1
