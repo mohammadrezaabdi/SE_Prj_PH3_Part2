@@ -17,15 +17,15 @@ N4 : hi = mid
 N5 : lo = mid + 1
 N6 : return -1
 
-[*] -> N1
+[*] --> N1
 N1 -> NW
 NW -> N2: lo <= hi
-NW -> N6: lo > hi
+NW --> N6: lo > hi
 N4 -> NW
 N5 -> NW
-N2 -> N3 : x == arr[mid] and (mid == 0 or x != arr[mid - 1])
+N2 --> N3 : x == arr[mid] and (mid == 0 or x != arr[mid - 1])
 N2 -> N4 : ![x == arr[mid] and (mid == 0 or x != arr[mid - 1])] and x <= arr[mid]
-N2 -> N5 : ![![x == arr[mid] and (mid == 0 or x != arr[mid - 1])] and x <= arr[mid]]
+N2 --> N5 : ![![x == arr[mid] and (mid == 0 or x != arr[mid - 1])] and x <= arr[mid]]
 N3 --> [*]
 N6 --> [*]
 
