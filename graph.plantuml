@@ -6,7 +6,7 @@ State N3
 State N4
 State N5
 State N6
-State NW
+State N7
 
 N1 : lo = 0
 N1 : hi = len(arr)
@@ -15,16 +15,17 @@ N3 : return mid
 N4 : hi = mid
 N5 : lo = mid + 1
 N6 : return -1
+N7 : while
 
 [*] --> N1
-N1 --> NW
-NW --> N2: lo <= hi
-NW --> N6: lo > hi
+N1 --> N7
+N7 --> N2: lo <= hi
+N7 --> N6: lo > hi
 N2 --> N3 : x == arr[mid] and (mid == 0 or x != arr[mid - 1])
 N2 --> N4 : ![x == arr[mid] and (mid == 0 or x != arr[mid - 1])] and x <= arr[mid]
 N2 --> N5 : ![![x == arr[mid] and (mid == 0 or x != arr[mid - 1])] and x <= arr[mid]]
-N4 --> NW
-N5 --> NW
+N4 --> N7
+N5 --> N7
 N3 --> [*]
 N6 --> [*]
 
